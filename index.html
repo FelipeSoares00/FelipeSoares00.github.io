@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felipe & Ana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #121212;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      color: #ff4f4f;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    .counter-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .counter-box {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .counter-box span {
+      display: block;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #ff4f4f;
+    }
+
+    .counter-box label {
+      font-size: 1rem;
+      color: #bbbbbb;
+    }
+
+    /* New counter row style */
+    .counter-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    /* Slide Show Styles */
+    .slideshow-container {
+      max-width: 500px; /* Reduzindo ainda mais o tamanho do slideshow */
+      position: relative;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .slides {
+      display: none;
+      width: 100%;
+      transition: opacity 1s ease;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 400px; /* Limitando a altura das imagens */
+      border-radius: 10px;
+      object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    }
+
+    .fade {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Felipe & Ana</h1>
+  <p>Passamos por inúmeros momentos juntos, e desde a primeira vez que conversamos, eu soube que era você. Sempre foi você, a <strong>mulher da minha vida</strong>. É ao seu lado que desejo estar para todo o sempre, pois meus olhos enxergam apenas você.</p>
+
+  <div class="slideshow-container">
+    <div class="slides fade">
+      <img src="./fotos/1.jpeg" alt="Foto 1">
+    </div>
+    <div class="slides fade">
+      <img src="./fotos/2.jpeg" alt="Foto 2">
+    </div>
+    <div class="slides fade">
+      <img src="./fotos/3.jpeg" alt="Foto 3">
+    </div>
+    <div class="slides fade">
+      <img src="./fotos/4.jpeg" alt="Foto 4">
+    </div>
+    <div class="slides fade">
+        <img src="./fotos/5.jpeg" alt="Foto 4">
+    </div>
+    <div class="slides fade">
+        <img src="./fotos/6.jpeg" alt="Foto 4">
+    </div>
+    <div class="slides fade">
+        <img src="./fotos/7.jpeg" alt="Foto 4">
+    </div>
+      
+      
+  </div>
+
+  <script>
+    let slideIndex = 0;
+
+    function showSlides() {
+      const slides = document.querySelectorAll('.slides');
+      slides.forEach(slide => slide.style.display = 'none');
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = 'block';
+      slides[slideIndex - 1].classList.add('fade');
+      setTimeout(() => {
+        slides[slideIndex - 1].classList.remove('fade');
+      }, 1000);
+    }
+
+    setInterval(showSlides, 3000);
+  </script>
+
+<br>
+<br>
+
+  <!-- First row (years, months, days) -->
+  <div class="counter-container">
+    <div class="counter-box">
+      <span id="years">00</span>
+      <label>Anos</label>
+    </div>
+    <div class="counter-box">
+      <span id="months">00</span>
+      <label>Meses</label>
+    </div>
+    <div class="counter-box">
+      <span id="days">00</span>
+      <label>Dias</label>
+    </div>
+  </div>
+
+  <!-- Second row (minutes, seconds, milliseconds) -->
+  <div class="counter-row">
+    <div class="counter-box">
+      <span id="minutes">00</span>
+      <label>Minutos</label>
+    </div>
+    <div class="counter-box">
+      <span id="seconds">00</span>
+      <label>Segundos</label>
+    </div>
+    <div class="counter-box">
+      <span id="milliseconds">000</span>
+      <label>Milissegundos</label>
+    </div>
+  </div>
+
+  <script>
+    function updateCounter() {
+      const startDate = new Date("2025-01-08T20:00:00"); // Data de início do relacionamento
+      const now = new Date();
+      
+      let diff = now - startDate;
+
+      const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+      diff -= years * 1000 * 60 * 60 * 24 * 365;
+
+      const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+      diff -= months * 1000 * 60 * 60 * 24 * 30;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= days * 1000 * 60 * 60 * 24;
+
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      diff -= hours * 1000 * 60 * 60;
+
+      const minutes = Math.floor(diff / (1000 * 60));
+      diff -= minutes * 1000 * 60;
+
+      const seconds = Math.floor(diff / 1000);
+      const milliseconds = diff % 1000;
+
+      document.getElementById("years").textContent = String(years).padStart(2, '0');
+      document.getElementById("months").textContent = String(months).padStart(2, '0');
+      document.getElementById("days").textContent = String(days).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+      document.getElementById("milliseconds").textContent = String(milliseconds).padStart(3, '0');
+    }
+
+    function showSlides() {
+      const slides = document.querySelectorAll(".slides");
+      let slideIndex = 0;
+
+      function displayNextSlide() {
+        slides.forEach(slide => slide.style.display = "none");
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].style.display = "block";
+      }
+
+      setInterval(displayNextSlide, 3000);
+      displayNextSlide(); // Show the first slide immediately
+    }
+
+    window.onload = function () {
+      updateCounter();
+      setInterval(updateCounter, 1000);
+      showSlides();
+    }
+  </script>
+</body>
+</html>
